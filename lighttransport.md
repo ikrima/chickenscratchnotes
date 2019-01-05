@@ -81,10 +81,6 @@ Imho, the easiest/comprehensive path are the Volume rendering siggraph courses. 
 * Photon Beam Diffusion- Hybrid Monte Carlo Method For Subsurface Scattering
 * Practical Rendering of Multiple Scattering Effects in ParticipatingMedia
 
-## Useful if completely new to rendering/photon mapping:
-Masters/Undergrad thesis are usually super great for getting up to speed on foundational techniques in the field
-* Photon Path Distribution in Inhomogeneous Scattering Media: http://www.mia.uni-saarland.de/schmaltz/Diplom.ps.gz
-
 ## Practical production papers
 Physically Based Shader Design In Arnold: https://www.arnoldrenderer.com/research/physically_based_shader_design_in_arnold.pdf
 Volumetric Skin and Fabric Shading at Framestore: https://blog.selfshadow.com/publications/s2017-shading-course/walster/s2017_pbs_volumetric_notes.pdf
@@ -99,6 +95,13 @@ Eric Heitz
 Henrik Jensen
 Magnus Wrenninge
 Wenzel Jakob
+
+## Useful links to bootstrap into subsurface rendering:
+Masters/Undergrad thesis are usually super great for getting up to speed on foundational techniques in the field. Here's some good overview links
+* Dipole approximation for dummies I: https://flashypixels.wordpress.com/2016/02/10/chronicles-of-a-tour-in-skin-shading-dipole-approximation-for-dummies/
+* Dipole approximation for dummies II: https://flashypixels.wordpress.com/2016/02/28/chronicles-of-a-tour-in-skin-shading-some-useful-biological-aspects-used-in-cg/
+* Photon Path Distribution in Inhomogeneous Scattering Media: http://www.mia.uni-saarland.de/schmaltz/Diplom.ps.gz
+* The Radiance Field: http://reedbeta.com/blog/the-radiance-field/
 
 # Notes: Volume Rendering
 
