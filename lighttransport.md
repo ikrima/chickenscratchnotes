@@ -82,19 +82,19 @@ Imho, the easiest/comprehensive path are the Volume rendering siggraph courses. 
 * Practical Rendering of Multiple Scattering Effects in ParticipatingMedia
 
 ## Practical production papers
-Physically Based Shader Design In Arnold: https://www.arnoldrenderer.com/research/physically_based_shader_design_in_arnold.pdf
-Volumetric Skin and Fabric Shading at Framestore: https://blog.selfshadow.com/publications/s2017-shading-course/walster/s2017_pbs_volumetric_notes.pdf
-Extending  the  Disney  BRDF  to  a  BSDF  with Integrated Subsurface Scattering: https://blog.selfshadow.com/publications/s2015-shading-course/burley/s2015_pbs_disney_bsdf_notes.pdf
+* Physically Based Shader Design In Arnold: https://www.arnoldrenderer.com/research/physically_based_shader_design_in_arnold.pdf
+* Volumetric Skin and Fabric Shading at Framestore: https://blog.selfshadow.com/publications/s2017-shading-course/walster/s2017_pbs_volumetric_notes.pdf
+* Extending  the  Disney  BRDF  to  a  BSDF  with Integrated Subsurface Scattering: https://blog.selfshadow.com/publications/s2015-shading-course/burley/s2015_pbs_disney_bsdf_notes.pdf
 
 ## Prolific researchers/active practicioners (not exhaustive list!)
-Wojciech Jarosz
-Per H. Christensen
-Christope Henry
-Eugene D'eon
-Eric Heitz
-Henrik Jensen
-Magnus Wrenninge
-Wenzel Jakob
+* Wojciech Jarosz  
+* Per H. Christensen  
+* Christope Henry  
+* Eugene D'eon  
+* Eric Heitz  
+* Henrik Jensen  
+* Magnus Wrenninge  
+* Wenzel Jakob
 
 ## Useful links to bootstrap into subsurface rendering:
 Masters/Undergrad thesis are usually super great for getting up to speed on foundational techniques in the field. Here's some good overview links
@@ -126,8 +126,8 @@ Modeled through beam transmittence. Assumes out-scattering coefficient, absorpti
 		○ Anisotropic: analytical model parameterized by g ε [-1,1]
 	
 Henyey-Greenstein phase function:
-	- Defines function parameterized by one function defines how much backscattering vs forward scattering
-	- http://www.astro.umd.edu/~jph/HG_note.pdf
+  - Defines function parameterized by one function defines how much backscattering vs forward scattering
+  - http://www.astro.umd.edu/~jph/HG_note.pdf
 
 ## Radiative Transfer Equation
 ![](resources/volrendering.png)
@@ -242,23 +242,16 @@ Dipole Approximation: Making subsurface translucency more accurate
   
   On the other hand, if a photon has an energy beyond the phonon spectrum, then while it can still cause a disturbance of the lattice ions, the solid cannot sustain this vibration, because the phonon mode isn’t available. This is similar to trying to oscillate something at a different frequency than the resonance frequency. So the lattice does not absorb this photon and it is re-emitted but with a very slight delay. This, naively, is the origin of the apparent slowdown of the light speed in the material. The emitted photon may encounter other lattice ions as it makes its way through the material and this accumulate the delay.
   
-  *Moral of the story*: the properties of a solid that we are familiar with have more to do with the “collective” behavior of a large number of atoms interacting with each other. In most cases, these do not reflect the properties of the individual, isolated atoms.	
-  From <https://www.physicsforums.com/insights/do-photons-move-slower-in-a-solid-medium/> 
+  *Moral of the story*: the properties of a solid that we are familiar with have more to do with the “collective” behavior of a large number of atoms interacting with each other. In most cases, these do not reflect the properties of the individual, isolated atoms.	 From <https://www.physicsforums.com/insights/do-photons-move-slower-in-a-solid-medium/> 
 
-	- Quantum theory describes radiation as photons being wave packets, not continuous waves
-	https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy
-	![](resources/quantumpacket.png)
+  - Quantum theory describes radiation as photons being wave packets, not continuous waves
+	  https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy
+	  ![](resources/quantumpacket.png)
 	
-	
-	
-	- The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion…
-	
-	Reference https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/
-	
-	From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/> 
+	- The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/
     ![](resources/collimatedlightsource.png)
 
-	The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.
+	  The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.
     ![](resources/theoryoflight.png)
 
 
