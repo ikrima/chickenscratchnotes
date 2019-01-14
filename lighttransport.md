@@ -1,23 +1,23 @@
-# Light transport notes: From Subsurface Scattering to Neutrino Transport
+# Light transport notes: From Subsurface Scattering to Neutron Transport
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-* [Light transport notes: From Subsurface Scattering to Neutrino Transport](#light-transport-notes-from-subsurface-scattering-to-neutrino-transport)
+* [Light transport notes: From Subsurface Scattering to Neutron Transport](#light-transport-notes-from-subsurface-scattering-to-Neutron-transport)
 * [TLDR](#tldr)
-	* [Highly explanative and parse-able papers](#highly-explanative-and-parse-able-papers)
-	* [Advanced/useful for reference](#advanceduseful-for-reference)
-	* [Practical production papers](#practical-production-papers)
-	* [Prolific researchers/active practicioners (not exhaustive list!)](#prolific-researchersactive-practicioners-not-exhaustive-list)
-	* [Useful links to bootstrap into subsurface rendering:](#useful-links-to-bootstrap-into-subsurface-rendering)
+    * [Highly explanative and parse-able papers](#highly-explanative-and-parse-able-papers)
+    * [Advanced/useful for reference](#advanceduseful-for-reference)
+    * [Practical production papers](#practical-production-papers)
+    * [Prolific researchers/active practicioners (not exhaustive list!)](#prolific-researchersactive-practicioners-not-exhaustive-list)
+    * [Useful links to bootstrap into subsurface rendering:](#useful-links-to-bootstrap-into-subsurface-rendering)
 * [Notes: Volume Rendering](#notes-volume-rendering)
-	* [Participating Media](#participating-media)
-	* [Radiative Transfer Equation](#radiative-transfer-equation)
-	* [Diffusion Theory of subsurface scattering:](#diffusion-theory-of-subsurface-scattering)
+    * [Participating Media](#participating-media)
+    * [Radiative Transfer Equation](#radiative-transfer-equation)
+    * [Diffusion Theory of subsurface scattering:](#diffusion-theory-of-subsurface-scattering)
 * [Foundational knowledge (but questionable if practically useful):](#foundational-knowledge-but-questionable-if-practically-useful)
-	* [E&M Radiation](#em-radiation)
-	* [Neutrino Transport](#neutrino-transport)
+    * [E&M Radiation](#em-radiation)
+    * [Neutron Transport](#Neutron-transport)
 
 <!-- /code_chunk_output -->
 
@@ -109,22 +109,22 @@ Masters/Undergrad thesis are usually super great for getting up to speed on foun
 Modeled through beam transmittence. Assumes out-scattering coefficient, absorption coefficient, & in-scattering
   - Mathematically defined: Beer's law
   - Transmission = $T_{r} \ =\ e^{-\sigma _{a} r}$
-	
-	Where ro is absorption coefficient. Most materials this is constant, for some like marble it's position dependent, and for smoke, it's direction dependent as well
-	$\sigma _{t} =\sigma _{a} \ +\ \sigma _{s}$
-	
-	$\sigma _{t}$ = attenuation coefficient, which is sum of absorption & out-scattering
-	
-	Avg distance a photon can travel: $\frac{1}{\sigma _{t}}$
+    
+    Where ro is absorption coefficient. Most materials this is constant, for some like marble it's position dependent, and for smoke, it's direction dependent as well
+    $\sigma _{t} =\sigma _{a} \ +\ \sigma _{s}$
+    
+    $\sigma _{t}$ = attenuation coefficient, which is sum of absorption & out-scattering
+    
+    Avg distance a photon can travel: $\frac{1}{\sigma _{t}}$
 
-	Albedo = fraction of energy that is re-emitted: $\frac{\sigma _{s}}{\sigma _{t}}$
-	
-	- Phase function tells us what direction photon will be scattered, which is a pdf taking incoming direction and outgoing ray and gives a probability that photon coming in from w_in will scatter in w_out
-	- For almost all naturally ocurring media, phase function only depends on the angle between w_in & w_out
-		○ For isotropic materials, it's sometimes thought of as reflected intensity as a function of angle normalized by intensity at normal incidence. Anistropic needs angle between directions. Crystalline (rare) structures need all 4 dimensions
-		○ Isotropic phase function: 1
-		○ Anisotropic: analytical model parameterized by g ε [-1,1]
-	
+    Albedo = fraction of energy that is re-emitted: $\frac{\sigma _{s}}{\sigma _{t}}$
+    
+    - Phase function tells us what direction photon will be scattered, which is a pdf taking incoming direction and outgoing ray and gives a probability that photon coming in from w_in will scatter in w_out
+    - For almost all naturally ocurring media, phase function only depends on the angle between w_in & w_out
+        ○ For isotropic materials, it's sometimes thought of as reflected intensity as a function of angle normalized by intensity at normal incidence. Anistropic needs angle between directions. Crystalline (rare) structures need all 4 dimensions
+        ○ Isotropic phase function: 1
+        ○ Anisotropic: analytical model parameterized by g ε [-1,1]
+    
 Henyey-Greenstein phase function:
   - Defines function parameterized by one function defines how much backscattering vs forward scattering
   - http://www.astro.umd.edu/~jph/HG_note.pdf
@@ -154,18 +154,18 @@ Summary:
   - For most translucent materials, after a handful of multiple events after a light ray enters a material, it tends to diffuse isotropically
   - Model diffusion with another virtual light underneath the surface and one above the surface. This is done so they cancel each other out based on some boundary condition
   - Boundary condition is net radiant flux of light at exit radiance has to be zero:
-	  $\int _{dV} \nabla u\ \cdotp \overrightarrow{n\ } dS$
+      $\int _{dV} \nabla u\ \cdotp \overrightarrow{n\ } dS$
 
     which simplifies to
 
     $div\ \nabla u\ =\ \Delta u\ =\ 0$
-	
+    
 
 Dipole Approximation: Making subsurface translucency more accurate
   - Dipole Approximation Explanation: https://computergraphics.stackexchange.com/questions/81/what-is-the-dipole-approximation-for-subsurface-scattering
-  	The assumption underlying such model is the same as lots of other models for skin rendering; the subsurface scattering can be approximated as a diffusion phenomenon. This is good because in highly scattering media, the distribution of light loses dependency from the angle and tends to isotropy.
-	The dipole approximation is a formulation for the resolution of such diffusion problem in an analytical fashion.
-	Basically they start by approximating the BSSRDF as a multiple scattering and single scattering component. The multiple scattering is then defined as:
+    The assumption underlying such model is the same as lots of other models for skin rendering; the subsurface scattering can be approximated as a diffusion phenomenon. This is good because in highly scattering media, the distribution of light loses dependency from the angle and tends to isotropy.
+    The dipole approximation is a formulation for the resolution of such diffusion problem in an analytical fashion.
+    Basically they start by approximating the BSSRDF as a multiple scattering and single scattering component. The multiple scattering is then defined as:
     ![](resources/dipoleeq.png)
     Where FtFt are Fresnel terms and RR is the diffusion profile expressed as function of the distance between the entry and exit point.
     This RR is referred to as diffusion profile and they formulate this profile via a dipole approximation. The contribution of the incoming light ray is considered to be the one of two virtual sources: one negative beneath the surface and one positive above it (that's why dipole)
@@ -217,7 +217,7 @@ Dipole Approximation: Making subsurface translucency more accurate
 
   - In classical electrodynamics, light is considered as an electromagnetic wave, which is described by Maxwell's equations. Light waves incident on a material induce small oscillations of polarisation in the individual atoms (or oscillation of electrons, in metals), causing each particle to radiate a small secondary wave in all directions, like a dipole antenna. All these waves add up to give specular reflection and refraction, according to the Huygens–Fresnel principle.
     In the case of dielectrics such as glass, the electric field of the light acts on the electrons in the material, and the moving electrons generate fields and become new radiators. The refracted light in the glass is the combination of the forward radiation of the electrons and the incident light. The reflected light is the combination of the backward radiation of all of the electrons.
-    In metals, electrons with no binding energy are called free electrons. When these electrons oscillate with the incident light, the phase difference between their radiation field and the incident field is π (180°), so the forward radiation cancels the incident light, and backward radiation is just the reflected light.	
+    In metals, electrons with no binding energy are called free electrons. When these electrons oscillate with the incident light, the phase difference between their radiation field and the incident field is π (180°), so the forward radiation cancels the incident light, and backward radiation is just the reflected light.  
     From <https://en.wikipedia.org/wiki/Reflection_(physics)> 
 
 
@@ -228,9 +228,9 @@ Dipole Approximation: Making subsurface translucency more accurate
     
     From <https://en.wikipedia.org/wiki/Reflection_(physics)> 
 
-	- SCHLICK PHASE FUNCTION. While the Henyey-Greenstein phase function is a good approximation to Mie scattering, it is still relatively expensive to evaluate. Schlick observed that the accurate shape is often not crucial for rendering applications and he replaced a relatively expensive exponentiation with even simpler expression [7]: P(ω ,ω ) = 1−k2 (1+k cosθ)2 (4) where k is a parameter similar to the asymmetry parameter g: −1 ≤ k ≤ 1. The phase function still needs to be normalized by multiplying it by 1/4π, so that it will integrate to 1. R
-	
-	- Case A, where the E of the incident photon matches a gap between E levels of the atom, so the atom is excited into a higher state (electron transition). This is often called "resonance absorption". Case B, where the E of the incident photon is lower than such gap, so there is no such excitation / transition, and the photon goes out as it came in. This is called "Rayleigh scattering". When the E of the incident photon is higher than the gap, the photon loses energy to the particle but we don't say that there is partial absorption (?) and this is called "Raman scattering" (also Stokes scattering, but there is also an anti-Stokes effect, let us leave that aside...). But then you learn that in case A the excitation lasts for an incredibly short time after which the photon is re-emitted with the same E as it came in, just as in case B. May it be that the duration of "excitation" in A is longer than "whatever happens" in B? (but it doesn't look like a great difference, given that the time is very short). 	From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/>  
+    - SCHLICK PHASE FUNCTION. While the Henyey-Greenstein phase function is a good approximation to Mie scattering, it is still relatively expensive to evaluate. Schlick observed that the accurate shape is often not crucial for rendering applications and he replaced a relatively expensive exponentiation with even simpler expression [7]: P(ω ,ω ) = 1−k2 (1+k cosθ)2 (4) where k is a parameter similar to the asymmetry parameter g: −1 ≤ k ≤ 1. The phase function still needs to be normalized by multiplying it by 1/4π, so that it will integrate to 1. R
+    
+    - Case A, where the E of the incident photon matches a gap between E levels of the atom, so the atom is excited into a higher state (electron transition). This is often called "resonance absorption". Case B, where the E of the incident photon is lower than such gap, so there is no such excitation / transition, and the photon goes out as it came in. This is called "Rayleigh scattering". When the E of the incident photon is higher than the gap, the photon loses energy to the particle but we don't say that there is partial absorption (?) and this is called "Raman scattering" (also Stokes scattering, but there is also an anti-Stokes effect, let us leave that aside...). But then you learn that in case A the excitation lasts for an incredibly short time after which the photon is re-emitted with the same E as it came in, just as in case B. May it be that the duration of "excitation" in A is longer than "whatever happens" in B? (but it doesn't look like a great difference, given that the time is very short).     From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/>  
 
   A common explanation that has been provided is that a photon moving through the material still moves at the speed of c, but when it encounters the atom of the material, it is absorbed by the atom via an atomic transition. After a very slight delay, a photon is then re-emitted. This explanation is incorrect and inconsistent with empirical observations. If this is what actually occurs, then the absorption spectrum will be discrete because atoms have only discrete energy states. Yet, in glass for example, we see almost the whole visible spectrum being transmitted with no discrete disruption in the measured speed. In fact, the index of refraction (which reflects the speed of light through that medium) varies continuously, rather than abruptly, with the frequency of light.
     
@@ -242,20 +242,20 @@ Dipole Approximation: Making subsurface translucency more accurate
   
   On the other hand, if a photon has an energy beyond the phonon spectrum, then while it can still cause a disturbance of the lattice ions, the solid cannot sustain this vibration, because the phonon mode isn’t available. This is similar to trying to oscillate something at a different frequency than the resonance frequency. So the lattice does not absorb this photon and it is re-emitted but with a very slight delay. This, naively, is the origin of the apparent slowdown of the light speed in the material. The emitted photon may encounter other lattice ions as it makes its way through the material and this accumulate the delay.
   
-  *Moral of the story*: the properties of a solid that we are familiar with have more to do with the “collective” behavior of a large number of atoms interacting with each other. In most cases, these do not reflect the properties of the individual, isolated atoms.	 From <https://www.physicsforums.com/insights/do-photons-move-slower-in-a-solid-medium/> 
+  *Moral of the story*: the properties of a solid that we are familiar with have more to do with the “collective” behavior of a large number of atoms interacting with each other. In most cases, these do not reflect the properties of the individual, isolated atoms.     From <https://www.physicsforums.com/insights/do-photons-move-slower-in-a-solid-medium/> 
 
   - Quantum theory describes radiation as photons being wave packets, not continuous waves
-	  https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy
-	  ![](resources/quantumpacket.png)
-	
-	- The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/
+      https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy
+      ![](resources/quantumpacket.png)
+    
+    - The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/
     ![](resources/collimatedlightsource.png)
 
-	  The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.
+      The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.
     ![](resources/theoryoflight.png)
 
 
-## Neutrino Transport
+## Neutron Transport
 This is the most useful literature I found on describing the nature of scattering. But it's also very dense. Also humbling how much of this stuff was solved in the 60s without computers. 
 
 
